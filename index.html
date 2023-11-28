@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      scale: 93%;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      grid-column: span 2;
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: red;
+      grid-column: span 2;
+      margin-top: 5px;
+    }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<h2>Lomakkeen validointi</h2>
+
+<form id="registrationForm">
+  <div>
+    <label for="userId">Käyttäjä ID:</label>
+    <input type="text" id="userId" name="userId"><br>
+    <p class="error" id="errorText-userId"></p>
+
+    <label for="password">Salasana:</label>
+    <input type="password" id="password" name="password"><br>
+    <p class="error" id="errorText-password"></p>
+
+    <label for="name">Nimi:</label>
+    <input type="text" id="name" name="name"><br>
+    <p class="error" id="errorText-name"></p>
+
+    <label for="address">Osoite:</label>
+    <input type="text" id="address" name="address"><br>
+    <p class="error" id="errorText-address"></p>
+  </div>
+
+  <div>
+    <label for="country">Maa:</label>
+    <select id="country" name="country">
+      <option value="default">Valitse maa</option>
+      <option value="Suomi">Suomi</option>
+      <option value="Muu">Muu</option>
+    </select><br>
+    <p class="error" id="errorText-country"></p>
+
+    <label for="postcode">Postinumero:</label>
+    <input type="text" id="postcode" name="postcode"><br>
+    <p class="error" id="errorText-postcode"></p>
+
+    <label for="email">Sähköposti:</label>
+    <input type="email" id="email" name="email"><br>
+    <p class="error" id="errorText-email"></p>
+
+    <label>Sukupuoli:</label><br>
+    <input type="radio" id="male" name="gender" value="Mies">
+    <label for="male">Mies</label><br>
+    <input type="radio" id="female" name="gender" value="Nainen">
+    <label for="female">Nainen</label><br>
+    <p class="error" id="errorText-gender"></p>
+
+    <label>Kieli:</label><br>
+    <input type="radio" id="finnish" name="language" value="Suomi">
+    <label for="finnish">Suomi</label><br>
+    <input type="radio" id="otherLanguage" name="language" value="Muu kuin suomi">
+    <label for="otherLanguage">Muu kuin suomi</label><br>
+    <p class="error" id="errorText-language"></p>
+  </div>
+
+  <label for="additionalInfo">Lisätietoja:</label><br>
+  <textarea id="additionalInfo" name="additionalInfo"></textarea><br>
+
+  <button type="submit">Lähetä</button>
+</form>
+
+<p class="error" id="errorText"></p>
+
+</body>
+</html>
