@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
   <style>
     body {
@@ -59,59 +59,59 @@
 
 <h2>Lomakkeen validointi</h2>
 
-<form id="registrationForm">
+<form id="rekisterointilomake">
   <div>
-    <label for="userId">Käyttäjä ID:</label>
-    <input type="text" id="userId" name="userId"><br>
-    <p class="error" id="errorText-userId"></p>
+    <label for="kayttajaId">Käyttäjä ID:</label>
+    <input type="text" id="kayttajaId" name="kayttajaId"><br>
+    <p class="error" id="errorText-kayttajaId"></p>
 
-    <label for="password">Salasana:</label>
-    <input type="password" id="password" name="password"><br>
-    <p class="error" id="errorText-password"></p>
+    <label for="salasana">Salasana:</label>
+    <input type="password" id="salasana" name="salasana"><br>
+    <p class="error" id="errorText-salasana"></p>
 
-    <label for="name">Nimi:</label>
-    <input type="text" id="name" name="name"><br>
-    <p class="error" id="errorText-name"></p>
+    <label for="nimi">Nimi:</label>
+    <input type="text" id="nimi" name="nimi"><br>
+    <p class="error" id="errorText-nimi"></p>
 
-    <label for="address">Osoite:</label>
-    <input type="text" id="address" name="address"><br>
-    <p class="error" id="errorText-address"></p>
+    <label for="osoite">Osoite:</label>
+    <input type="text" id="osoite" name="osoite"><br>
+    <p class="error" id="errorText-osoite"></p>
   </div>
 
   <div>
-    <label for="country">Maa:</label>
-    <select id="country" name="country">
+    <label for="maa">Maa:</label>
+    <select id="maa" name="maa">
       <option value="default">Valitse maa</option>
       <option value="Suomi">Suomi</option>
       <option value="Muu">Muu</option>
     </select><br>
-    <p class="error" id="errorText-country"></p>
+    <p class="error" id="errorText-maa"></p>
 
-    <label for="postcode">Postinumero:</label>
-    <input type="text" id="postcode" name="postcode"><br>
-    <p class="error" id="errorText-postcode"></p>
+    <label for="postinumero">Postinumero:</label>
+    <input type="text" id="postinumero" name="postinumero"><br>
+    <p class="error" id="errorText-postinumero"></p>
 
-    <label for="email">Sähköposti:</label>
-    <input type="email" id="email" name="email"><br>
-    <p class="error" id="errorText-email"></p>
+    <label for="sahkoposti">Sähköposti:</label>
+    <input type="email" id="sahkoposti" name="sahkoposti"><br>
+    <p class="error" id="errorText-sahkoposti"></p>
 
     <label>Sukupuoli:</label><br>
-    <input type="radio" id="male" name="gender" value="Mies">
-    <label for="male">Mies</label><br>
-    <input type="radio" id="female" name="gender" value="Nainen">
-    <label for="female">Nainen</label><br>
-    <p class="error" id="errorText-gender"></p>
+    <input type="radio" id="mies" name="sukupuoli" value="Mies">
+    <label for="mies">Mies</label><br>
+    <input type="radio" id="nainen" name="sukupuoli" value="Nainen">
+    <label for="nainen">Nainen</label><br>
+    <p class="error" id="errorText-sukupuoli"></p>
 
     <label>Kieli:</label><br>
-    <input type="radio" id="finnish" name="language" value="Suomi">
-    <label for="finnish">Suomi</label><br>
-    <input type="radio" id="otherLanguage" name="language" value="Muu kuin suomi">
-    <label for="otherLanguage">Muu kuin suomi</label><br>
-    <p class="error" id="errorText-language"></p>
+    <input type="radio" id="suomi" name="kieli" value="Suomi">
+    <label for="suomi">Suomi</label><br>
+    <input type="radio" id="muuKieli" name="kieli" value="Muu kuin suomi">
+    <label for="muuKieli">Muu kuin suomi</label><br>
+    <p class="error" id="errorText-kieli"></p>
   </div>
 
-  <label for="additionalInfo">Lisätietoja:</label><br>
-  <textarea id="additionalInfo" name="additionalInfo"></textarea><br>
+  <label for="Lisatietoja">Lisätietoja:</label><br>
+  <textarea id="Lisatietoja" name="Lisatietoja"></textarea><br>
 
   <button type="submit">Lähetä</button>
 </form>

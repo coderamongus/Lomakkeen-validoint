@@ -1,75 +1,74 @@
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('registrationForm').addEventListener('submit', function (event) {
-    const userId = document.getElementById('userId').value;
-    const password = document.getElementById('password').value;
-    const name = document.getElementById('name').value;
-    const address = document.getElementById('address').value;
-    const country = document.getElementById('country').value;
-    const postcode = document.getElementById('postcode').value;
-    const email = document.getElementById('email').value;
-    const gender = document.querySelector('input[name="gender"]:checked');
-    const language = document.querySelector('input[name="language"]:checked');
-    const additionalInfo = document.getElementById('additionalInfo').value;
+  document.getElementById('rekisterointilomake').addEventListener('submit', function (event) {
+    const kayttajaId = document.getElementById('kayttajaId').value;
+    const salasana = document.getElementById('salasana').value;
+    const nimi = document.getElementById('nimi').value;
+    const osoite = document.getElementById('osoite').value;
+    const maa = document.getElementById('maa').value;
+    const postinumero = document.getElementById('postinumero').value;
+    const sahkoposti = document.getElementById('sahkoposti').value;
+    const sukupuoli = document.querySelector('input[name="sukupuoli"]:checked');
+    const kieli = document.querySelector('input[name="kieli"]:checked');
+    const Lisatietoja = document.getElementById('Lisatietoja').value;
 
-    let errorMessages = [];
+    let virheviestit = [];
 
-  
-    const userIdPattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@£$€&%#]).{6,}$/;
-    if (!userId.trim() || !userId.match(userIdPattern)) {
-      errorMessages.push({ field: 'userId', message: 'Käyttäjä ID tulee olla vähintään 6 merkkiä ja sisältää vähintään 1 numeron, 1 iso kirjaimen ja yhden seuraavista erikoismerkeistä: !@£$€&%#.' });
+    const kayttajaIdKaava = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@£$€&%#]).{6,}$/;
+    if (!kayttajaId.trim() || !kayttajaId.match(kayttajaIdKaava)) {
+      virheviestit.push({ kentta: 'kayttajaId', viesti: 'Käyttäjä ID tulee olla vähintään 6 merkkiä ja sisältää vähintään 1 numeron, 1 iso kirjaimen ja yhden seuraavista erikoismerkeistä: !@£$€&%#.' });
     }
 
-    if (!password.trim()) {
-      errorMessages.push({ field: 'password', message: 'Salasana vaaditaan.' });
+    if (!salasana.trim()) {
+      virheviestit.push({ kentta: 'salasana', viesti: 'Salasana vaaditaan.' });
     }
 
-    if (!name.trim()) {
-      errorMessages.push({ field: 'name', message: 'Nimi vaaditaan.' });
+    if (!nimi.trim()) {
+      virheviestit.push({ kentta: 'nimi', viesti: 'Nimi vaaditaan.' });
     }
 
-    if (!address.trim()) {
-      errorMessages.push({ field: 'address', message: 'Osoite vaaditaan.' });
+    if (!osoite.trim()) {
+      virheviestit.push({ kentta: 'osoite', viesti: 'Osoite vaaditaan.' });
     }
 
-    if (country === 'default') {
-      errorMessages.push({ field: 'country', message: 'Valitse maa.' });
+    if (maa === 'default') {
+      virheviestit.push({ kentta: 'maa', viesti: 'Valitse maa.' });
     }
 
-    if (!postcode.trim()) {
-      errorMessages.push({ field: 'postcode', message: 'Postinumero vaaditaan.' });
-    } else if (!/^\d{5}$/.test(postcode)) {
-      errorMessages.push({ field: 'postcode', message: 'Postinumeron tulee olla tarkalleen 5 numeroa.' });
+    if (!postinumero.trim()) {
+      virheviestit.push({ kentta: 'postinumero', viesti: 'Postinumero vaaditaan.' });
+    } else if (!/^\d{5}$/.test(postinumero)) {
+      virheviestit.push({ kentta: 'postinumero', viesti: 'Postinumeron tulee olla tarkalleen 5 numeroa.' });
     }
 
-    if (!email.trim()) {
-      errorMessages.push({ field: 'email', message: 'Sähköposti vaaditaan.' });
-    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-      errorMessages.push({ field: 'email', message: 'Virheellinen sähköpostiosoite.' });
+    if (!sahkoposti.trim()) {
+      virheviestit.push({ kentta: 'sahkoposti', viesti: 'Sähköposti vaaditaan.' });
+    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(sahkoposti)) {
+      virheviestit.push({ kentta: 'sahkoposti', viesti: 'Virheellinen sähköpostiosoite.' });
     }
 
-    if (!gender) {
-      errorMessages.push({ field: 'gender', message: 'Valitse sukupuoli.' });
+    if (!sukupuoli) {
+      virheviestit.push({ kentta: 'sukupuoli', viesti: 'Valitse sukupuoli.' });
     }
 
-    if (!language) {
-      errorMessages.push({ field: 'language', message: 'Valitse kieli.' });
+    if (!kieli) {
+      virheviestit.push({ kentta: 'kieli', viesti: 'Valitse kieli.' });
     }
 
-    displayErrors(errorMessages);
+    naytaVirheet(virheviestit);
 
-    if (errorMessages.length > 0) {
-      event.preventDefault(); // Prevent default form submission behavior
+    if (virheviestit.length > 0) {
+      event.preventDefault(); // Estä oletustoiminto lomakkeen lähetykselle
     }
   });
 
-  function displayErrors(errors) {
-    errors.forEach(function (error) {
-      const errorTextElement = document.getElementById(`errorText-${error.field}`);
-      errorTextElement.innerHTML = '';
-      const errorParagraph = document.createElement('p');
-      errorParagraph.textContent = error.message;
-      errorParagraph.className = 'error';
-      errorTextElement.appendChild(errorParagraph);
+  function naytaVirheet(virheet) {
+    virheet.forEach(function (virhe) {
+      const virheTekstiElementti = document.getElementById(`errorText-${virhe.kentta}`);
+      virheTekstiElementti.innerHTML = '';
+      const virheKappale = document.createElement('p');
+      virheKappale.textContent = virhe.viesti;
+      virheKappale.className = 'error';
+      virheTekstiElementti.appendChild(virheKappale);
     });
   }
 });
